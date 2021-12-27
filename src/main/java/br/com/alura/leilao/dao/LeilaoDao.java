@@ -10,18 +10,20 @@ import org.springframework.stereotype.Repository;
 
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Repository
 public class LeilaoDao {
 
     private EntityManager em;
 
+    @Autowired
     public LeilaoDao(EntityManager em) {
         this.em = em;
     }
 
-    public void salvar(Leilao leilao) {
-        em.merge(leilao);
+    public Leilao salvar(Leilao leilao) {
+        return em.merge(leilao);
     }
 
     public Leilao buscarPorId(Long id) {
