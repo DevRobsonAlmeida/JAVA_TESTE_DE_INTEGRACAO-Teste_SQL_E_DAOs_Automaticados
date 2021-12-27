@@ -32,9 +32,7 @@ class LeilaoDaoTest {
 
     @Test
     public void testCadastrarLeicao() {
-        Usuario usuario = criarUsuario();
-        Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now(), usuario);
-        
+        Leilao leilao = criarLeilao();
         leilao = this.dao.salvar(leilao);
         
         Leilao salvo = this.dao.buscarPorId(leilao.getId());
@@ -43,14 +41,11 @@ class LeilaoDaoTest {
     
     @Test
     public void testAtualizarLeicao() {
-        Usuario usuario = criarUsuario();
-        Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now(), usuario);
-        
+        Leilao leilao = criarLeilao();
         leilao = this.dao.salvar(leilao);
         
         leilao.setNome("Celular");
         leilao.setValorInicial(new BigDecimal("400"));
-        
         leilao = dao.salvar(leilao);
         
         Leilao salvo = this.dao.buscarPorId(leilao.getId());
@@ -63,6 +58,12 @@ class LeilaoDaoTest {
         Usuario usuario = new Usuario("fulano", "fulano@gmail.com", "12345678");
         em.persist(usuario);
         return usuario;
+    }
+    
+    private Leilao criarLeilao(){
+        Usuario usuario = criarUsuario();
+        Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now(), usuario);
+        return leilao;
     }
 
 }
