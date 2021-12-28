@@ -15,32 +15,34 @@ import java.time.LocalDate;
  * @author 99030499
  */
 public class LeilaoBuilder {
-    
+
     private String nome;
     private BigDecimal valorInicial;
     private LocalDate data;
     private Usuario usuario;
-
+    
     public LeilaoBuilder comNome(String nome) {
-         this.nome = nome;
-         return this;
+        this.nome = nome;
+        return this;
     }
+
     public LeilaoBuilder comValorInicial(String valorInicial) {
-         this.valorInicial = new BigDecimal(valorInicial);
-         return this;
+        this.valorInicial = new BigDecimal(valorInicial);
+        return this;
     }
+
     public LeilaoBuilder comData(LocalDate data) {
-         this.data = data;
-         return this;
+        this.data = data;
+        return this;
     }
+
     public LeilaoBuilder comUsuario(Usuario usuario) {
-         this.usuario = usuario;
-         return this;
+        this.usuario = usuario;
+        return this;
     }
     
     public Leilao criar(){
         return new Leilao(nome, valorInicial, data, usuario);
     }
-    
     
 }
